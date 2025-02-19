@@ -23,13 +23,13 @@ export default function Home() {
 
     setLoading(true);
     setActiveSearch(true);
-    setUsers([]);
     setError("");
 
     try {
       const fetchedDomains = await fetchDomains(searchInput);
       setUsers(fetchedDomains);
     } catch (error: unknown) {
+      setUsers([]);
       setError(error instanceof Error ? error.message : String(error));
     } finally {
       setLoading(false);
